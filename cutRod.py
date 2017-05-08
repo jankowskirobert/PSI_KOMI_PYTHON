@@ -112,8 +112,8 @@ while True:
 #    print(startPoint.distanceTo(endPoint))
 
 
-    pointsList = [None] * 10
-    for i in range(0, 10):
+    pointsList = [None] * 5
+    for i in range(0, 5):
         pointsList[i] = randomPoint()
 
 #    pointsList[0] = startPoint
@@ -121,14 +121,14 @@ while True:
 
     print(*pointsList, sep="\n")
 
-    br = BruteForceMethod([Point(5,4), Point(1,4), Point(4,2), Point(2,2), Point(1,1)], DistanceStrategy())
+    br = BruteForceMethod(pointsList, DistanceStrategy())
     br.resolveProblem()
-    arry = prepareArray(10)
+    arry = prepareArray(5)
     fillArray(pointsList, arry)
     print(arry)
     print("Result: ")
 
-    path = findMinPath(arry, 10, 2)
+    path = findMinPath(arry, 5, 1)
     Mafenetre = Tk()
     Mafenetre.title('Cercle')
 

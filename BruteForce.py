@@ -23,5 +23,6 @@ class BruteForceMethod(object):
                 result = sumByStrategy
                 path = i
         print("BR: " + str(result) + " " + str(path))
+        print("Path:" + str(self.permutations[path]))
 
 

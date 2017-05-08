@@ -1,5 +1,6 @@
 from Measure import Measure
 import math
+
 class DistanceStrategy(Measure):
 
     def calculate(self, point1, point2):
