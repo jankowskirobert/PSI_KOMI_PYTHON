@@ -3,7 +3,7 @@ from random import randrange
 import numpy as np
 from tkinter import *
 from BruteForce import BruteForceMethod
-
+from Distance import DistanceStrategy
 
 
 def memorizedCutRod(p,n):
@@ -121,7 +121,7 @@ while True:
 
     print(*pointsList, sep="\n")
 
-    br = BruteForceMethod([Point(5,4), Point(1,4), Point(4,2), Point(2,2), Point(1,1)])
+    br = BruteForceMethod([Point(5,4), Point(1,4), Point(4,2), Point(2,2), Point(1,1)], DistanceStrategy())
     br.resolveProblem()
     arry = prepareArray(10)
     fillArray(pointsList, arry)
