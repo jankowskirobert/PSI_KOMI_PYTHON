@@ -2,6 +2,9 @@ from Point import Point
 from random import randrange
 import numpy as np
 from tkinter import *
+from BruteForce import BruteForceMethod
+
+
 
 def memorizedCutRod(p,n):
     memory = [-float("Inf")] * n
@@ -21,7 +24,7 @@ def cutRod(p, memory, n):
     return memory[n-1]
 
 def randomPoint():
-    return Point(randrange(100,500),randrange(0,100))
+    return Point(randrange(100,500, 10),randrange(100,500, 10))
 
 def prepareArray(n):
     negihbourArray = np.zeros((n,n), float)
@@ -54,7 +57,13 @@ def removePath(neighbourArray, posI, posJ, colsRm, rowsRm):
 
 def printPoint(pathVisit, points):
     r = 5
-    for i in range(0, len(pathVisit)-1):
+    x = points[pathVisit[0]].getLocationX()
+    y = points[pathVisit[0]].getLocationY()
+    Canevas.create_oval(x-r, y-r, x+r, y+r, outline='red', fill='blue')
+    Canevas.create_line(x, y,points[pathVisit[1]].getLocationX()
+ , points[pathVisit[1]].getLocationY()
+, fill="#476042")
+    for i in range(1, len(pathVisit)-1):
         x = points[pathVisit[i]].getLocationX()
         y = points[pathVisit[i]].getLocationY()
         Canevas.create_oval(x-r, y-r, x+r, y+r, outline='blue', fill='blue')
@@ -93,7 +102,7 @@ def findMinPath(neighbourArray, points, startPoint):
 
     print("To start: " + str(neighbourArray[startPoint, i]))
     distance += neighbourArray[i, startPoint]
-    return paths
+    return paths + [startPoint]
 
 
 
@@ -112,6 +121,8 @@ while True:
 
     print(*pointsList, sep="\n")
 
+    br = BruteForceMethod([Point(5,4), Point(1,4), Point(4,2), Point(2,2), Point(1,1)])
+    br.resolveProblem()
     arry = prepareArray(10)
     fillArray(pointsList, arry)
     print(arry)
@@ -122,8 +133,8 @@ while True:
     Mafenetre.title('Cercle')
 
 # Création d'un widget Canvas (zone graphique)
-    Largeur = 480
-    Hauteur = 320
+    Largeur = 580
+    Hauteur = 520
     Canevas = Canvas(Mafenetre, width = Largeur, height =Hauteur, bg ='white')
     Canevas.pack(padx =5, pady =5)
     printPoint(path, pointsList)

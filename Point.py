@@ -26,5 +26,9 @@ class Point(object):
         return math.hypot(diff_x, diff_y)
     
     def __str__(self):
-        return "Point at: " + str(self.x_location) + " " + str(self.y_location) 
+        return "Point at: " + str(self.x_location) + " " + str(self.y_location)
+
+    def __repr__(self):
+        return "["+ str(self.x_location) + " " + str(self.y_location) +"]"
+
     
